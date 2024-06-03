@@ -1,0 +1,110 @@
+/* Apply a reset to all elements to ensure consistent styling across browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style the main container that holds the image gallery */
+.overall-container {
+  width: 100%; /* Full width */
+  height: 100vh; /* Full viewport height */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  background-color: deepskyblue; /* Background color */
+}
+
+/* Style the container that holds the grid of images */
+.images {
+  width: 90%; /* Take up 90% of the parent's width */
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(3, 1fr); /* Default to three equal-width columns */
+  grid-gap: 30px; /* Gap between grid items */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style each image container */
+.image-cont {
+  width: 100%; /* Full width within the grid column */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for a subtle 3D effect */
+}
+
+/* Ensure images within .image-cont take up the full width of their container */
+.image-cont img {
+  width: 100%; /* Full width */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style the overlay that appears when an image is clicked */
+.overlay {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  position: fixed; /* Fixed position for better overlay behavior */
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.76); /* Semi-transparent background */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  display: none; /* Hidden by default, will be shown when an image is clicked */
+}
+
+/* Style the container for the image within the overlay */
+.overlay-img {
+  max-width: 90%; /* Maximum width of the overlay image */
+  max-height: 90%; /* Maximum height of the overlay image */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Ensure the image within .overlay-img takes up the full width, with a maximum height */
+.overlay-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style the close button for the overlay */
+.times {
+  font-size: 30px; /* Large font size */
+  font-weight: 900; /* Bold font weight */
+  color: red; /* Red color */
+  position: absolute; /* Position absolutely relative to the nearest positioned ancestor */
+  top: 10px;
+  right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for a subtle 3D effect */
+  padding: 10px; /* Padding around the text */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+
+/* Utility class to show the overlay when an image is clicked */
+.show {
+  display: flex; /* Set display to flex to make the overlay visible */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .images {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust columns for tablets and smaller devices */
+    grid-gap: 20px; /* Reduce gap for smaller screens */
+  }
+  .overlay-img {
+    max-width: 80%; /* Reduce max width for smaller screens */
+    max-height: 80%; /* Reduce max height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .images {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust columns for mobile devices */
+    grid-gap: 10px; /* Further reduce gap for smaller screens */
+  }
+  .overlay-img {
+    max-width: 70%; /* Further reduce max width for smaller screens */
+    max-height: 70%; /* Further reduce max height for smaller screens */
+  }
+}
